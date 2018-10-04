@@ -3,8 +3,8 @@ from tg_utils.grapher import *
 
 def graph(args):
 
-    char = get_input('Enter a character to represent empty space.')
-    draw_char = get_input('Enter a character with which to draw the object.')
+    char = ' ' + get_input('Enter a character to represent empty space.')[0]
+    draw_char = ' ' + get_input('Enter a character with which to draw the object.')[0]
     dst = get_input('Enter a name for the folder of text files.')
 
     # build a blank grid
@@ -22,7 +22,7 @@ def graph(args):
     joined = "".join(my_graph)
     print(joined)
 
-    rotate_animation(pi/64, 2*pi, dst)
+    rotate_animation(pi/128, 2*pi, char, draw_char, dst)
 
 def wh_help(args=''):
     if args:

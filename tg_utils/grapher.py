@@ -206,7 +206,7 @@ def convert_to_2d(graph, points_list):
         points_list_2d.append(canvas_point)
     return points_list_2d
 
-def rotate_animation(step, duration, folder_name):
+def rotate_animation(step, duration, char, draw_char, folder_name):
     t = 0
     while t <= duration:
         folder = "./"+folder_name
@@ -216,7 +216,7 @@ def rotate_animation(step, duration, folder_name):
         new_drawing = open(folder + "/graph" + str(version_num) + ".txt", "wb")
 
         # make blank space
-        my_blank = BlankGraph(size=40, char=u"\U0001F4BF")
+        my_blank = BlankGraph(size=40, char=char)
         my_graph = my_blank.build()
 
         # create a camera
@@ -225,7 +225,7 @@ def rotate_animation(step, duration, folder_name):
         # create cube
         my_cube = Mesh(location=[0, 0, 0], rotation=[pi/8, t, pi/8], scale=[2, 2, 2])
 
-        my_camera.draw(my_graph, my_cube, u"\U0001F4BE")
+        my_camera.draw(my_graph, my_cube, draw_char)
 
         joined = "".join(my_graph)
 
