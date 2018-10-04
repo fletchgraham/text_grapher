@@ -10,6 +10,8 @@ as a .txt file. The animation can be watched by rapidly viewing
 the text files in succession. OS X has the ability to preview files -
 this works perfectly.
 
+![alt text](img/example_01.jpg)
+
 ## Usage:
 
 - install Python 3.X
