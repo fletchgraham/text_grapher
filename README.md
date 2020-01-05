@@ -1,18 +1,16 @@
-# text_grapher
+# Text Grapher: Drawing with Unicode
 
-Render graphs and shapes using a grid of characters in a text file.
+Render graphs and shapes using a grid of characters in a text file. Check out [this notebook](text_grapher.ipynb) explaining my process.
 
-## What it does:
+![alt text](img/example_01.jpg)
+
+## Run the Example:
 
 Text Grapher creates an animation of a cube spinning in space.
 It uses provided characters to render each frame of the animation
 as a .txt file. The animation can be watched by rapidly viewing
 the text files in succession. OS X has the ability to preview files -
 this works perfectly.
-
-![alt text](img/example_01.jpg)
-
-## Usage:
 
 - install Python 3.X
 - clone this repository.
