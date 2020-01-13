@@ -8,13 +8,13 @@
 
 **For what purpose?** The purpose of this python project is educational. When I started this project in 2017 I had been using 3d software for over a decade without understanding what was happening under the hood. It was also on my to-do list to learn python, so I set out to write a graphics library from scratch, with no third-party libraries like numpy. The research required to pull it off helped me answer the following questions:
 
-- What how are vectors represented in software?
+- How are vectors represented in software?
 - How are geometries defined?
 - How can geometries be transformed using matrices?
 - How can 3d space be represented on a 2d grid?
 - What is object oriented programming?
 
-#### [View this notebook](text_grapher.ipynb) to see my process of developing Text Grapher.
+**[View this notebook](text_grapher.ipynb) to see my process of developing Text Grapher.**
 
 
 ## Run the Example:
