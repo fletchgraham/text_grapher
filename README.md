@@ -4,7 +4,7 @@
 
 ## Intro
 
-**What is Text Grapher?** Text Grapher is graphics library for rendering geometries using text. Rather than drawing lines using pixels in an image, it draws lines using characters in a string.
+**What is Text Grapher?** Text Grapher is a graphics library for rendering geometries using text. Rather than drawing lines using pixels in an image, it draws lines using characters in a string.
 
 **For what purpose?** The purpose of this python project is educational. When I started this project in 2017 I had been using 3d software for over a decade without understanding what was happening under the hood. It was also on my to-do list to learn python, so I set out to write a graphics library from scratch, with no third-party libraries like numpy. The research required to pull it off helped me answer the following questions:
 
