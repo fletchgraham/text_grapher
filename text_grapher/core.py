@@ -60,3 +60,11 @@ class Object3D:
     def scale(self, vector):
         self._scale = vector_add(self.scale_factor, vector)
 
+
+class Mesh(Object3D):
+    def __init__(self):
+        super().__init__()
+        self.vertices = []
+        self.edges = []
+        self.character = 'M'
+
