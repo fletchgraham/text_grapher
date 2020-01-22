@@ -1,4 +1,6 @@
+from collections import namedtuple
 
+Vector = namedtuple('Vector', ['x', 'y', 'z'], defaults=[0,0,0])
 
 def matrix_product(A, B):
 
@@ -21,3 +23,9 @@ def vector_to_matrix(vector):
 
 def matrix_to_vector(matrix):
     return tuple([i[0] for i in matrix[:-1]])
+
+def vector_add(v1, v2):
+    return Vector(
+        v1.x + v2.x,
+        v1.y + v2.y,
+        v1.z + v2.z)
