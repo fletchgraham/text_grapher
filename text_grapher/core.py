@@ -68,3 +68,8 @@ class Mesh(Object3D):
         self.edges = []
         self.character = 'M'
 
+
+class Camera(Object3D):
+    def __init__(self):
+        super().__init__()
+        self.location = (0, 0, 10)
