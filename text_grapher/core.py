@@ -2,11 +2,20 @@ from text_grapher.util import Vector
 
 
 class Scene:
-    def __init__(self):
+    def __init__(self, name='tg_scene'):
+        self._name = name
         self.frame_start = 1
         self.frame_stop = 1
         self.meshes = []
         self.camera = Camera()
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value: str):
+        self._name = value
 
     def render(self):
         print('render not implemented!')

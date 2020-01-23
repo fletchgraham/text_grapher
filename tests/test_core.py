@@ -1,9 +1,18 @@
 import text_grapher as tg
 
-def test_scene_init():
+def test_scene_naming():
+    #test getter for scene name
     scene = tg.Scene()
-    assert scene.frame_start == 1
-    assert scene.camera.location == (0,0,10)
+    assert scene.name == 'tg_scene'
+
+    # test rename
+    new_name = 'my_3d_scene'
+    scene.name = new_name
+    assert scene.name == new_name
+
+    # test init with name
+    another_scene = tg.Scene('fred')
+    assert another_scene.name == 'fred'
 
 def test_mesh_init():
     mesh = tg.Mesh()
