@@ -1,5 +1,4 @@
-from text_grapher.util import Vector
-
+from text_grapher.maths import Vector
 
 def test_vector_init():
     vector = Vector()
