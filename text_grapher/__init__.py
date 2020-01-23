@@ -5,3 +5,5 @@ from text_grapher.core import (
     Camera,
     Vector
     )
+
+from text_grapher.maths import Vector
