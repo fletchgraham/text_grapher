@@ -2,8 +2,8 @@ import text_grapher as tg
 from text_grapher.core import Entity
 
 def test_scene_naming():
-    #test getter for scene name
     scene = tg.Scene()
+    # default name
     assert scene.name == 'tg_scene'
 
     # test rename
