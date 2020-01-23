@@ -1,4 +1,4 @@
-from text_grapher.util import Vector, vector_add
+from text_grapher.util import Vector
 
 
 def test_vector_init():
@@ -10,4 +10,4 @@ def test_vector_init():
 def test_add_vectors():
     v1 = Vector(1, 3, 4)
     v2 = Vector(2, 4, -10)
-    assert vector_add(v1, v2) == Vector(3, 7, -6)
+    assert Vector.add(v1, v2) == Vector(3, 7, -6)

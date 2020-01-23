@@ -4,10 +4,8 @@ from text_grapher.util import Vector
 class Scene:
     def __init__(self, name='tg_scene'):
         self._name = name
-        self.frame_start = 1
-        self.frame_stop = 1
-        self.meshes = []
-        self.camera = Camera()
+        self._objects = []
+        self._camera = Camera()
 
     @property
     def name(self):
@@ -17,14 +15,8 @@ class Scene:
     def name(self, value: str):
         self._name = value
 
-    def render(self):
-        print('render not implemented!')
 
-    def show(self, frame):
-        print('show not implemented')
-
-
-class Object3D:
+class Entity:
     def __init__(self):
         self._location = Vector()
         self._rotation = Vector()
@@ -33,7 +25,7 @@ class Object3D:
     # LOCATION
 
     @property
-    def location(self):
+    def location(self) -> Vector:
         return self._location
 
     @location.setter
@@ -41,44 +33,44 @@ class Object3D:
         self._location = vector
 
     def translate(self, vector):
-        self._location = vector_add(self.location, vector)
+        self.location = Vector.add(self.location, vector)
 
     # ROTATION
 
     @property
-    def rotation(self):
+    def rotation(self) -> Vector:
         return self._rotation
 
     @rotation.setter
     def rotation(self, vector):
         self._rotation = vector
 
-    def rotate(self, vector):
-        self._rotation = vector_add(self.rotation, vector)
+    def rotate_x(self, radians: float):
+        r = Vector(radians, 0, 0)
+        self.rotation = Vector.add(self.rotation, r)
 
     # SCALE
 
     @property
-    def scale_factor(self):
+    def scale_factor(self) -> Vector:
         return self._scale
 
     @scale_factor.setter
     def scale_factor(self, vector):
         self._scale = vector
 
-    def scale(self, vector):
-        self._scale = vector_add(self.scale_factor, vector)
+    def scale(self, x, y, z):
+        _x, _y, _z = self.scale
+        self.scale = Vector(x * _x, y * _y, z * _z)
 
 
-class Mesh(Object3D):
+class Mesh():
     def __init__(self):
-        super().__init__()
-        self.vertices = []
-        self.edges = []
-        self.character = 'M'
+        self._vertices = []
+        self._edges = []
 
 
-class Camera(Object3D):
+class Camera(Entity):
     def __init__(self):
         super().__init__()
         self.location = (0, 0, 10)
