@@ -1,65 +1,26 @@
-from text_grapher.util import Vector
-
+from text_grapher.maths import Vector
 
 class Scene:
     def __init__(self, name='tg_scene'):
-        self._name = name
-        self._objects = []
-        self._camera = Camera()
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value: str):
-        self._name = value
+        self.name = name
+        self.render_width = 40
+        self.render_height = 40
 
 
 class Entity:
     def __init__(self):
-        self._location = Vector()
-        self._rotation = Vector()
-        self._scale = Vector(1, 1, 1)
+        self.location = Vector()
+        self.rotation = Vector()
+        self.scale = Vector(1, 1, 1)
 
-    # LOCATION
+    def translate(self, x=0, y=0, z=0):
+        v = Vector(x, y, z)
+        self.location = Vector.add(self.location, v)
 
-    @property
-    def location(self) -> Vector:
-        return self._location
+    def rotate(self, x=0, y=0, z=0):
+        self.rotation = Vector.add(self.rotation, Vector(x, y, z))
 
-    @location.setter
-    def location(self, vector):
-        self._location = vector
-
-    def translate(self, vector):
-        self.location = Vector.add(self.location, vector)
-
-    # ROTATION
-
-    @property
-    def rotation(self) -> Vector:
-        return self._rotation
-
-    @rotation.setter
-    def rotation(self, vector):
-        self._rotation = vector
-
-    def rotate_x(self, radians: float):
-        r = Vector(radians, 0, 0)
-        self.rotation = Vector.add(self.rotation, r)
-
-    # SCALE
-
-    @property
-    def scale_factor(self) -> Vector:
-        return self._scale
-
-    @scale_factor.setter
-    def scale_factor(self, vector):
-        self._scale = vector
-
-    def scale(self, x, y, z):
+    def resize(self, x=1, y=1, z=1):
         _x, _y, _z = self.scale
         self.scale = Vector(x * _x, y * _y, z * _z)
 
