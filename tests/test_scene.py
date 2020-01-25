@@ -1,4 +1,7 @@
+import os
+import shutil
 import text_grapher as tg
+from math import sin, cos
 
 def test_scene_naming():
     scene = tg.Scene()
@@ -26,7 +29,7 @@ def test_render_dims():
     scene.graph.height = 80
     assert scene.graph.height == 80
 
-def test_render():
+def test_get_frame():
     scene = tg.Scene()
 
     @scene.animate
@@ -37,3 +40,19 @@ def test_render():
     scene.frame(7)
     print(scene.graph)
     assert '6' in scene.graph._array[5]
+
+def test_render():
+    scene = tg.Scene()
+
+    @scene.animate
+    def lissajous(t):
+        x = cos(3 * t) * 18 + 20
+        y = sin(4 * t) * 18 + 20
+        scene.graph.plot(x, y, u"\u2584")
+
+    scene.render()
+    assert os.path.exists(scene.name)
+    with open(os.path.join(scene.name, '00004.txt'), 'r') as infile:
+        assert u"\u2584" in infile.read()
+
+    shutil.rmtree(scene.name)
