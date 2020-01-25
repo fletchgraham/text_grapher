@@ -1,4 +1,4 @@
-"""For working with the grid of characters as a graph."""
+"""Essentially the rendering engine of text grapher."""
 
 class Graph:
     """The canvas onto which graphics are drawn.

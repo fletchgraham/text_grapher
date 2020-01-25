@@ -1,42 +1,30 @@
+"""Define Entities that can live in a 3d scene."""
+
 from text_grapher.maths import Vector
-from text_grapher.graph import Graph
 
-class Scene:
-    def __init__(self, name='tg_scene'):
-        self.name = name
-        self.render_width = 40
-        self.render_height = 40
-        self.background = '.'
-        self._animations = []
 
-    def graph_array(self, f):
-        for a in self._animations:
-            a(f)
-        graph = Graph(
-            self.render_width,
-            self.render_height,
-            self.background,
-            )
-        return graph._array
+class _Entity:
+    """Base class for things that live in a 3d scene.
 
-    def animate(self, func):
-        """decorator for defining animation functions"""
-        self._animations.append(func)
+    Objects based on this class can be transformed in 3d space."""
 
-class Entity:
     def __init__(self):
+        """Zero out the loc rot and scalle"""
         self.location = Vector()
         self.rotation = Vector()
         self.scale = Vector(1, 1, 1)
 
     def translate(self, x=0, y=0, z=0):
+        """add to the location parameter of the object"""
         v = Vector(x, y, z)
         self.location = Vector.add(self.location, v)
 
     def rotate(self, x=0, y=0, z=0):
+        """add to the rotation parameter."""
         self.rotation = Vector.add(self.rotation, Vector(x, y, z))
 
     def resize(self, x=1, y=1, z=1):
+        """multiply scale by the given x y and z values."""
         _x, _y, _z = self.scale
         self.scale = Vector(x * _x, y * _y, z * _z)
 
@@ -47,7 +35,7 @@ class Mesh():
         self._edges = []
 
 
-class Camera(Entity):
+class Camera(_Entity):
     def __init__(self):
         super().__init__()
         self.location = (0, 0, 10)

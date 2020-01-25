@@ -1,5 +1,6 @@
-import text_grapher as tg
-from text_grapher.core import Entity
+from text_grapher import Vector
+from text_grapher.entities import _Entity as Entity
+
 
 def test_entity_rotation():
     ob = Entity()
@@ -13,7 +14,7 @@ def test_entity_rotation():
 
 def test_entity_scale():
     ob = Entity()
-    assert ob.scale == tg.Vector(1,1,1)
+    assert ob.scale == Vector(1,1,1)
 
     ob.resize(x=3)
     ob.resize(x=.5)
@@ -24,4 +25,4 @@ def test_enity_translate():
     assert ob.location.z == 0
 
     ob.translate(z=15.4)
-    assert ob.location == tg.Vector(0,0,15.4)
+    assert ob.location == Vector(0,0,15.4)

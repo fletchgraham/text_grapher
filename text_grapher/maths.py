@@ -1,3 +1,5 @@
+"""Math concepts like vectors and matrices"""
+
 from collections import namedtuple
 
 class Vector(namedtuple('Vector', ['x', 'y', 'z'], defaults=[0,0,0])):
