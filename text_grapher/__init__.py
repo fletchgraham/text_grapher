@@ -7,3 +7,5 @@ from text_grapher.core import (
     )
 
 from text_grapher.maths import Vector
+
+from text_grapher.graph import Graph

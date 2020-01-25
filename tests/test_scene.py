@@ -25,3 +25,13 @@ def test_render_dims():
 
     scene.render_height = 80
     assert scene.render_height == 80
+
+def test_render():
+    scene = tg.Scene()
+
+    @scene.animate
+    def my_animation(t):
+        scene.background = f'{t}'
+
+    graph = scene.graph_array(7)
+    assert '7' in graph[5]
