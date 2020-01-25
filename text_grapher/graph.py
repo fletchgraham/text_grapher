@@ -8,9 +8,9 @@ class Graph:
     cells."""
     def __init__(self, width=40, height=40, character='.'):
         self._array = [[]]
-        self._width = width
-        self._height = height
-        self._character = character
+        self.width = width
+        self.height = height
+        self.background = character
         self.clear()
 
     def __str__(self):
@@ -19,8 +19,8 @@ class Graph:
     def clear(self):
         """Resets the graph per the settings"""
         self._array = [
-            [self._character for x in range(int(self._width))]
-            for y in range(int(self._height))
+            [self.background for x in range(int(self.width))]
+            for y in range(int(self.height))
             ]
 
     def plot(self, x, y, character):

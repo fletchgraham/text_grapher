@@ -17,21 +17,23 @@ def test_scene_naming():
 def test_render_dims():
     scene = tg.Scene()
 
-    assert scene.render_width == 40
-    assert scene.render_height == 40
+    assert scene.graph.width == 40
+    assert scene.graph.height == 40
 
-    scene.render_width = 80
-    assert scene.render_width == 80
+    scene.graph.width = 80
+    assert scene.graph.width == 80
 
-    scene.render_height = 80
-    assert scene.render_height == 80
+    scene.graph.height = 80
+    assert scene.graph.height == 80
 
 def test_render():
     scene = tg.Scene()
 
     @scene.animate
     def my_animation(t):
-        scene.background = f'{t}'
+        scene.graph.background = f'{t}'
+        scene.graph.clear()
 
-    graph = scene.graph_array(7)
-    assert '7' in graph[5]
+    scene.frame(7)
+    print(scene.graph)
+    assert '6' in scene.graph._array[5]
