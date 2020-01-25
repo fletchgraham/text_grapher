@@ -32,3 +32,10 @@ def test_matrix_product():
     assert not matrix_product(A, B) == matrix_product(B, A)
     assert matrix_product(A, B) == C
     assert matrix_product(B, A) == D
+
+def test_matrix_vector_conversions():
+    v = Vector(2, 3, 4)
+    m = vector_to_matrix(v)
+    assert m == [[2], [3], [4], [1]]
+    v2 = matrix_to_vector(m)
+    assert v2 == v
