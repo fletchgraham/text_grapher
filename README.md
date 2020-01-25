@@ -19,16 +19,11 @@
 
 ## Run the Example:
 
-Text Grapher creates an animation of a cube spinning in space.
-It uses provided characters to render each frame of the animation
-as a .txt file. The animation can be watched by rapidly viewing
-the text files in succession. OS X has the ability to preview files -
-this works perfectly.
+The example is an animated lissajous curve.
 
-- install Python 3.X
-- clone this repository.
-- `cd` into it.
-- run `pip install .`
-- `cd` to where you want to save the generated text files.
-- run `tg graph` and answer the prompts.
-- open the generated folder to find your text files.
+1. install Python 3.X
+1. clone this repository.
+1. `cd` into it.
+1. python -m text_grapher.example
+
+A window will appear and play the animation.
