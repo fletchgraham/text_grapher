@@ -38,19 +38,21 @@ def test_get_frame():
         scene.graph.clear()
 
     scene.frame(7)
-    print(scene.graph)
-    assert '6' in scene.graph._array[5]
+    assert '7' in scene.graph._array[5]
 
 def test_render():
     scene = tg.Scene()
 
     @scene.animate
-    def lissajous(t):
-        x = cos(3 * t) * 18 + 20
-        y = sin(4 * t) * 18 + 20
-        scene.graph.plot(x, y, u"\u2584")
+    def lissajous(frame):
+        for t in range(1000):
+            t *= .01
+            x = cos((0 + frame)/300 * t) * 18 + 20
+            y = sin(1 * t) * 18 + 20
+            scene.graph.plot(x, y, u"\u2584")
 
-    scene.render()
+    scene.frame_stop = 5
+    scene.render(open_player=False)
     assert os.path.exists(scene.name)
     with open(os.path.join(scene.name, '00004.txt'), 'r') as infile:
         assert u"\u2584" in infile.read()

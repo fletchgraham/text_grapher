@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter.filedialog import askdirectory, asksaveasfilename
 
 class TGPlayer(tk.Tk):
-    def __init__(self):
+    def __init__(self, folder=None, play_on_open=False):
         super().__init__()
         self.title("TG Player")
         self.rowconfigure(0, minsize=800, weight=1)
@@ -14,6 +14,13 @@ class TGPlayer(tk.Tk):
         self.frame = 0
 
         self.add_widgets()
+
+        # render method in scene can open the player in the dst
+        if folder:
+            self.open_sequence(folder)
+
+        if play_on_open:
+            self.play()
 
     def add_widgets(self):
         self.txt = tk.Text(self)
@@ -41,8 +48,10 @@ class TGPlayer(tk.Tk):
         self.toolbar .grid(row=0, column=0, sticky="ns")
         self.txt.grid(row=0, column=1, sticky="nsew")
 
-    def open_sequence(self):
-        folder = askdirectory()
+    def open_sequence(self, folder=None):
+        if not folder:
+            folder = askdirectory()
+
         if not folder:
             return
 
@@ -70,7 +79,7 @@ class TGPlayer(tk.Tk):
                 self.frame = 0
             self.txt.delete(1.0, tk.END)
             self.txt.insert(tk.END, self.graphs[self.frame])
-            self.after(30, self.play_next)
+            self.after(10, self.play_next)
 
     def play(self):
         self.paused = False
@@ -79,6 +88,11 @@ class TGPlayer(tk.Tk):
     def pause(self):
         self.paused = True
 
+def open_graph_sequence(folder):
+    tg_player = TGPlayer(folder, play_on_open=True)
+    tg_player.mainloop()
 
-tg_player = TGPlayer()
-tg_player.mainloop()
+if __name__ == '__main__':
+
+    tg_player = TGPlayer()
+    tg_player.mainloop()
