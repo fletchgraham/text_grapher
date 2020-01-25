@@ -12,7 +12,7 @@ if __name__ == '__main__':
             t *= .01
             x = cos((0 + frame)/300 * t) * 18 + 20
             y = sin(1 * t) * 18 + 20
-            scene.graph.plot(x, y, u"\u2584")
+            scene.graph.plot(x, y, '@')
 
     scene.frame_stop = 500
     scene.render(open_player=True)
