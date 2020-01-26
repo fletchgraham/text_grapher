@@ -12,6 +12,7 @@ class TGPlayer(tk.Tk):
         self.graphs = []
         self.paused = True
         self.frame = 0
+        self.mode = 'light'
 
         self.add_widgets()
 
@@ -40,10 +41,16 @@ class TGPlayer(tk.Tk):
             text='Pause',
             command=self.pause
             )
+        self.btn_invert = tk.Button(
+            self.toolbar,
+            text='Invert',
+            command=self.invert
+            )
 
         self.btn_open.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
         self.btn_play.grid(row=1, column=0, sticky="ew", padx=5, pady=5)
         self.btn_pause.grid(row=2, column=0, sticky="ew", padx=5, pady=5)
+        self.btn_invert.grid(row=3, column=0, sticky="ew", padx=5, pady=5)
 
         self.toolbar .grid(row=0, column=0, sticky="ns")
         self.txt.grid(row=0, column=1, sticky="nsew")
@@ -79,7 +86,21 @@ class TGPlayer(tk.Tk):
                 self.frame = 0
             self.txt.delete(1.0, tk.END)
             self.txt.insert(tk.END, self.graphs[self.frame])
-            self.after(10, self.play_next)
+
+            # framerate
+            self.after(33, self.play_next)
+
+    def invert(self):
+        if self.mode == 'light':
+            self.mode = 'dark'
+            self.txt.configure(
+                {"background": "black",
+                "foreground": "white"})
+        else:
+            self.mode = 'light'
+            self.txt.configure(
+                {"background": "white",
+                "foreground": "black"})
 
     def play(self):
         self.paused = False
