@@ -17,13 +17,15 @@
 **[View this notebook](text_grapher.ipynb) to see my process of developing Text Grapher.**
 
 
-## Run the Example:
+## Run the Examples:
 
-The example is an animated lissajous curve.
+Currently, the best way to see what this library does is to look at the examples. There is an animated lissajous curve, and a fireworks animation. 
 
 1. install Python 3.X
 1. clone this repository.
 1. `cd` into it.
-1. python -m text_grapher.example
+1. `python -m tg_examples.lissajous`
+
+or `python -m tg_examples.fireworks`
 
 A window will appear and play the animation.
