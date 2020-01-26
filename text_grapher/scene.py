@@ -21,29 +21,36 @@ class Scene:
         """decorator for defining animation functions"""
         self._animations.append(func)
 
-    def render_gif(self):
+    def render_gif(self, invert=False):
         # import here so the rest of the package is usable without pillow
         from PIL import Image, ImageDraw
         spacing = 1.1
 
         imgs = []
 
+        background_color = 255
+        text_color = 0
+        if invert:
+            background_color, text_color = 0, 255
+
         for t in range(self.frame_start, self.frame_stop):
             self.frame(t)
             graph = str(self.graph)
+            width = int(self.graph.width * 12 + 15)
+            height = int(self.graph.height * 12 + 15)
 
             img = Image.new(
-                'RGB',
-                (600, 600),
-                color = (255, 255, 255)
+                'L',
+                (width, height),
+                color = background_color
                 )
 
             d = ImageDraw.Draw(img)
             d.text(
                 (10,10),
                 graph,
-                fill=(0,0,0),
-                spacing=1.1
+                fill=text_color,
+                spacing=1.0
                 )
 
             imgs.append(img)
@@ -51,7 +58,8 @@ class Scene:
         imgs[0].save(
             f'{self.name}.gif',
             save_all=True,
-            append_images=imgs)
+            append_images=imgs[1:],
+            duration=33)
 
 
     def render(self, open_player=False):
