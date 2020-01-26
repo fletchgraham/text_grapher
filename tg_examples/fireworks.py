@@ -3,15 +3,6 @@ from math import sin, cos
 from random import randint, choice
 
 class Firework:
-    chars = [
-        '*WMB8&%$#@',
-        'oahkbdpqwm',
-        'LCJUYXZO0Q',
-        'rcvunxzjft',
-        '/|()1{}[]',
-        '-_+<>i!lI?',
-        ".'`,^:;~"
-        ]
 
     def __init__(self, start, x, y, graph):
         self.x = x
@@ -28,8 +19,8 @@ class Firework:
             y = r * sin(t) + self.y
 
             # choose a lighter character as the radius increases
-            ch = choice(Firework.chars[int(r/4)])
-            self.graph.plot(x, y, ch)
+            density = 7 - int(r/4)
+            self.graph.plot(x, y, tg.Graph.random_char(density))
 
 if __name__ == '__main__':
 
@@ -60,6 +51,7 @@ if __name__ == '__main__':
     @scene.animate
     def fireworks_show(frame):
         for firework in fireworks:
+            # draw the firework if the animation has reached its start value
             if firework.start <= frame:
                 firework.draw(frame)
 
