@@ -1,5 +1,7 @@
 """Essentially the rendering engine of text grapher."""
 
+from random import choice
+
 class Graph:
     """The canvas onto which graphics are drawn.
 
@@ -44,3 +46,28 @@ class Graph:
         for y in range(min(y1, y2), max(y1, y2)):
             x = (dx / dy) * (y - y1) + x1
             self.plot(x, y, character)
+
+    @classmethod
+    def random_char(self, density=7):
+        """Return a random character of the given density.
+
+        On a white background, a denser character will appear darker.
+        """
+        if density > 7:
+            density = 7
+        if density < 0:
+            density = 0
+
+        # a list of characters ordered by denisty
+        chars = [
+            ' ',
+            ".'`,^:;~",
+            '-_+<>i!lI?',
+            '/|()1{}[]',
+            'rcvunxzjft',
+            'LCJUYXZO0Q',
+            'oahkbdpqwm',
+            '*WMB8&%$#@',
+            ]
+
+        return choice(chars[density])
