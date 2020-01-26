@@ -25,7 +25,10 @@ class Graph:
 
     def plot(self, x, y, character):
         """replace a character in the graph with the given character"""
-        self._array[int(y)][int(x)] = character
+        try:
+            self._array[int(y)][int(x)] = character
+        except IndexError:
+            pass
 
     def line(self, x1, y1, x2, y2, character):
         """draw a line from (x1, y1) to (x2, y2) using the given character"""
