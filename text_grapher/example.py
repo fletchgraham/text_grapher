@@ -16,3 +16,4 @@ if __name__ == '__main__':
 
     scene.frame_stop = 500
     scene.render(open_player=True)
+    # scene.render_gif()

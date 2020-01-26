@@ -13,6 +13,7 @@ class Scene:
         self._animations = []
 
     def frame(self, f):
+        self.graph.clear()
         for a in self._animations:
             a(f)
 
@@ -20,9 +21,42 @@ class Scene:
         """decorator for defining animation functions"""
         self._animations.append(func)
 
-    def render(self, open_player=False):
+    def render_gif(self):
+        # import here so the rest of the package is usable without pillow
+        from PIL import Image, ImageDraw
+        spacing = 1.1
+
+        imgs = []
+
         for t in range(self.frame_start, self.frame_stop):
-            self.graph.clear()
+            self.frame(t)
+            graph = str(self.graph)
+
+            img = Image.new(
+                'RGB',
+                (600, 600),
+                color = (255, 255, 255)
+                )
+
+            d = ImageDraw.Draw(img)
+            d.text(
+                (10,10),
+                graph,
+                fill=(0,0,0),
+                spacing=1.1
+                )
+
+            imgs.append(img)
+
+        imgs[0].save(
+            f'{self.name}.gif',
+            save_all=True,
+            append_images=imgs)
+
+
+    def render(self, open_player=False):
+
+        for t in range(self.frame_start, self.frame_stop):
             self.frame(t)
             if not os.path.exists(self.name):
                 os.makedirs(self.name)
