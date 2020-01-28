@@ -1,4 +1,4 @@
-# Text Grapher: 2D & 3D Graphics Rendered as Text
+# Text Grapher: 3D Graphics Rendered as Text
 
 ![](img/cube_example.gif)
 
