@@ -6,7 +6,7 @@
 
 **What is Text Grapher?** Text Grapher is a graphics library for rendering graphics using text. Rather than drawing with pixels in an image, it draws with characters in a string.
 
-**For what purpose?** Text Grapher is mostly an educational novelty. Before this project I had been using 3D software every day without understanding what was happening under the hood. Putting this library together forced me to derive key concepts that make 3D software tick.
+**For what purpose?** Text Grapher is mostly an educational novelty. Before this project I had been using 3D software every day without understanding what was happening under the hood. Putting this library together forced me to derive the key concepts that make 3D software tick.
 
 ## Super Simple Example
 
