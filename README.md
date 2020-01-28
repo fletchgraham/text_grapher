@@ -34,22 +34,20 @@ Pretty simple right? We just create a scene, add a cube to it, define an animati
 
 The only lines here that aren't self explanatory are `scene.graph.center_view()` and the animation decorator. The former just centers the origin of the world in the middle of our graph. The latter is how we tell the scene what to animate: any function decorated with `@scene.animation` gets added to a list of functions that run at the begining of each frame. In this example we just rotated the cube a little bit each frame.
 
-## Run the Other Examples:
+There are a couple other examples that come with Text Grapher. Once you install Text Grapher you can run them with `python -m tg_examples.lissajous` or `python -m tg_examples.fireworks`. A window will appear and play the animation.
 
-There is also an animated lissajous curve, and a fireworks animation. 
+## Installation
 
-1. install Python 3.X
+requires Python 3
+
 1. clone this repository.
 1. `cd` into it.
-1. run:
+1. run `pip3 install .` on mac or `pip install .` on windows
+1. PIL is required if you wish to save gifs of your animations: `pip install PIL`
 
-`python -m tg_examples.lissajous` or
-`python -m tg_examples.fireworks` or
-`python -m tg_examples.cube`
+It's best to take a look at the source code for the examples to get a feel for the usage of this library. 
 
-A window will appear and play the animation.
-
-## Feature List
+## Features
 
 - Render 2D and 3D animations as a series of text files
 - Save the animation as a gif (requires PIL)
