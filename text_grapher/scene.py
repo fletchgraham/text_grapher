@@ -88,7 +88,8 @@ class Scene:
             f'{self.name}.gif',
             save_all=True,
             append_images=imgs[1:],
-            duration=33)
+            duration=33,
+            loop=0)
 
 
     def render(self, open_player=False):
