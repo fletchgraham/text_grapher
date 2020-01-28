@@ -3,6 +3,7 @@
 import os
 from text_grapher.graph import Graph
 from text_grapher.player import open_graph_sequence
+from text_grapher.entities import Camera, Geometry
 
 class Scene:
     def __init__(self, name='tg_scene'):
@@ -11,13 +12,41 @@ class Scene:
         self.frame_start = 0
         self.frame_stop = 100
         self._animations = []
+        self.geometries = []
+        self.camera = Camera()
+
+    def add(self, geometry):
+        self.geometries.append(geometry)
 
     def frame(self, f):
         self.graph.clear()
         for a in self._animations:
             a(f)
 
-    def animate(self, func):
+        for geometry in self.geometries:
+            self.draw_geometry(geometry)
+
+    def convert_verts_to_2d(self, verts_list):
+        size = self.graph.width
+        points_list_2d = []
+        for v in verts_list:
+            x = 5*v.x/v.z * size/2
+            y = 5*v.y/v.z * size/2
+            points_list_2d.append((x, y))
+        return points_list_2d
+
+    def draw_geometry(self, geometry):
+        """draw the geometry on the graph"""
+
+        world_verts = geometry.world_verts
+        cam_verts = self.camera.world_to_cam(world_verts)
+        points = self.convert_verts_to_2d(cam_verts)
+        for segment in geometry.edges:
+            A = points[segment[0]]
+            B = points[segment[1]]
+            self.graph.line(*A, *B, geometry.character)
+
+    def animation(self, func):
         """decorator for defining animation functions"""
         self._animations.append(func)
 

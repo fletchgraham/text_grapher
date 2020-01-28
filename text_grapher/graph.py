@@ -34,6 +34,7 @@ class Graph:
 
     def line(self, x1, y1, x2, y2, character):
         """draw a line from (x1, y1) to (x2, y2) using the given character"""
+        x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
         dx = x2 - x1
         dy = y2 - y1
 

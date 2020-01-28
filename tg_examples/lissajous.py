@@ -6,7 +6,7 @@ if __name__ == '__main__':
     scene = tg.Scene()
     scene.name = 'lissajous_example'
 
-    @scene.animate
+    @scene.animation
     def lissajous(frame):
         for t in range(1000):
             t *= .01

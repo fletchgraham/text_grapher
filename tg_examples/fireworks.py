@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     fireworks = prior_fireworks + fireworks
 
-    @scene.animate
+    @scene.animation
     def fireworks_show(frame):
         for firework in fireworks:
             # draw the firework if the animation has reached its start value

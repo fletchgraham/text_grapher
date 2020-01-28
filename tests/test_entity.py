@@ -1,5 +1,5 @@
 from text_grapher import Vector
-from text_grapher.entities import _Entity as Entity
+from text_grapher.entities import Entity
 
 
 def test_entity_rotation():

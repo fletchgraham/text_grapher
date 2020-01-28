@@ -33,6 +33,14 @@ class Vector(namedtuple('Vector', ['x', 'y', 'z'], defaults=[0,0,0])):
         new_vector = matrix_to_vector(MP)
         return new_vector
 
+    @classmethod
+    def scale(cls, vector, factor):
+        """return a new vector with the new scale."""
+        x = vector.x * factor
+        y = vector.y * factor
+        z = vector.z * factor
+        return Vector(x, y, z)
+
 def matrix_product(A, B):
     """Return the matrix product: AB"""
     C = [[0 for i in A] for j in B]
@@ -110,6 +118,6 @@ def scale_matrix(x=0, y=0, z=0):
     p = matrix_product(scale_m, m)
     return p
 
-def transform_verts(verts_list, matrix):
+def transformed_verts(verts_list, matrix):
     """Return a new list of verts with the matrix applied"""
-    return [Vector.transform(vert) for vert in verts_list]
+    return [Vector.transform(vert, matrix) for vert in verts_list]

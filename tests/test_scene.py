@@ -32,7 +32,7 @@ def test_render_dims():
 def test_get_frame():
     scene = tg.Scene()
 
-    @scene.animate
+    @scene.animation
     def my_animation(t):
         scene.graph.background = f'{t}'
         scene.graph.clear()
@@ -43,7 +43,7 @@ def test_get_frame():
 def test_render():
     scene = tg.Scene()
 
-    @scene.animate
+    @scene.animation
     def lissajous(frame):
         for t in range(1000):
             t *= .01
