@@ -1,31 +1,63 @@
-# Text Grapher: 3D Graphics Rendered as Text
+# Text Grapher: 2D & 3D Graphics Rendered as Text
 
-![alt text](img/example_01.jpg)
+![](img/cube_example.gif)
 
 ## Intro
 
-**What is Text Grapher?** Text Grapher is a graphics library for rendering geometries using text. Rather than drawing lines using pixels in an image, it draws lines using characters in a string.
+**What is Text Grapher?** Text Grapher is a graphics library for rendering graphics using text. Rather than drawing lines using pixels in an image, it draws lines using characters in a string. 2D and 3D animations can quickly be composed and rendered as a series of text files or a gif.
 
-**For what purpose?** The purpose of this python project is educational. When I started this project in 2017 I had been using 3d software for over a decade without understanding what was happening under the hood. It was also on my to-do list to learn python, so I set out to write a graphics library from scratch, with no third-party libraries like numpy. The research required to pull it off helped me answer the following questions:
+**For what purpose?** The purpose of this python project is educational. Before this project I had been using 3D software every day without understanding what was happening under the hood. Putting this project together forced me to derive key concepts that make 3D software tick. Writing the Text Grapher API helped me understand how Blender's API works and where its structure comes from. 
 
-- How are vectors represented in software?
-- How are geometries defined?
-- How can geometries be transformed using matrices?
-- How can 3d space be represented on a 2d grid?
-- What is object oriented programming?
+**I'm currently working on [this notebook](text_grapher.ipynb), which documents my process of developing Text Grapher.**
 
-**[View this notebook](text_grapher.ipynb) to see my process of developing Text Grapher.**
+## Quickstart
 
+The following code is from the cube example that comes with Text Grapher. 
 
-## Run the Examples:
+```python
+import text_grapher as tg
 
-Currently, the best way to see what this library does is to look at the examples. There is an animated lissajous curve, and a fireworks animation. 
+# the scene object keeps track of the camera, the graph,
+# and the entities in the world
+scene = tg.Scene()
+scene.name = 'cube_example'
+
+# centers the screen on the origin of the world
+scene.graph.center_view()
+
+# add a cube to the scene
+cube = tg.Cube(size=2)
+scene.add(cube)
+
+# define an animation,
+# this will run before each frame is drawn
+@scene.animation
+def cube_rotation(t):
+    cube.rotate(.05, .05, .05)
+
+# writes the frames as text files
+# and open a player to view them as an animation
+#scene.render(open_player=True)
+scene.render_gif(invert=True)
+```
+
+## Run the Other Examples:
+
+There is also an animated lissajous curve, a fireworks animation. 
 
 1. install Python 3.X
 1. clone this repository.
 1. `cd` into it.
-1. `python -m tg_examples.lissajous`
+1. run:
 
-or `python -m tg_examples.fireworks`
+`python -m tg_examples.lissajous` or
+`python -m tg_examples.fireworks` or
+`python -m tg_examples.cube`
 
 A window will appear and play the animation.
+
+## Contributing
+
+The best way to contribute at the moment is to write some cool examples!
+
+![](img/example_01.jpg)
