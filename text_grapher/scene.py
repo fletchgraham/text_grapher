@@ -10,7 +10,7 @@ class Scene:
         self.name = name
         self.graph = Graph()
         self.frame_start = 0
-        self.frame_stop = 100
+        self.frame_stop = 250
         self._animations = []
         self.geometries = []
         self.camera = Camera()
