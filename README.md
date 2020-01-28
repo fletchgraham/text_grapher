@@ -4,11 +4,9 @@
 
 ## Intro
 
-**What is Text Grapher?** Text Grapher is a graphics library for rendering graphics using text. Rather than drawing lines using pixels in an image, it draws lines using characters in a string. 2D and 3D animations can quickly be composed and rendered as a series of text files or a gif.
+**What is Text Grapher?** Text Grapher is a graphics library for rendering graphics using text. Rather than drawing with pixels in an image, it draws with characters in a string.
 
-**For what purpose?** Text Grapher is mostly an educational novelty. Before this project I had been using 3D software every day without understanding what was happening under the hood. Putting this library together forced me to derive key concepts that make 3D software tick. Writing the Text Grapher API helped me understand how Blender's API works and where its structure comes from. 
-
-**I'm currently working on [this notebook](text_grapher.ipynb), which documents my process of developing Text Grapher.**
+**For what purpose?** Text Grapher is mostly an educational novelty. Before this project I had been using 3D software every day without understanding what was happening under the hood. Putting this library together forced me to derive key concepts that make 3D software tick.
 
 ## Super Simple Example
 
@@ -51,8 +49,16 @@ There is also an animated lissajous curve, and a fireworks animation.
 
 A window will appear and play the animation.
 
+## Feature List
+
+- Render 2D and 3D animations as a series of text files
+- Save the animation as a gif (requires PIL)
+- Playback Text based animations in a GUI
+
 ## Contributing
 
 The best way to contribute at the moment is to write some cool examples! 
 
 ![](img/example_01.jpg)
+
+**I'm currently working on [this notebook](text_grapher.ipynb), which documents my process of developing Text Grapher.**
