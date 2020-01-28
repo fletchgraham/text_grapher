@@ -15,8 +15,19 @@ class Graph:
         self.background = character
         self.clear()
 
+        self.offset_x = 0
+        self.offset_y = 0
+        self.scale_x = 1
+        self.scale_y = 1
+
     def __str__(self):
         return '\n'.join([' '.join(row) for row in self._array])
+
+    def center_view(self):
+        """place the origin at the center and flip y axis"""
+        self.offset_x = self.width / 2
+        self.offset_y = self.height / 2
+        self.scale_y = -1
 
     def clear(self):
         """Resets the graph per the settings"""
@@ -27,10 +38,20 @@ class Graph:
 
     def plot(self, x, y, character):
         """replace a character in the graph with the given character"""
-        try:
-            self._array[int(y)][int(x)] = character
-        except IndexError:
-            pass
+        x = self.scale_x * x + self.offset_x
+
+        # if the point is off either side of the grapher, get out early
+        if x > self.width - 1 or x < 0:
+            return
+
+        y = self.scale_y * y + self.offset_y
+
+        # if the point is off the top or bottom, get out early
+        if y > self.height - 1 or y < 0:
+            return
+
+        self._array[int(y)][int(x)] = character
+
 
     def line(self, x1, y1, x2, y2, character):
         """draw a line from (x1, y1) to (x2, y2) using the given character"""
