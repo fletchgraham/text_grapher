@@ -43,7 +43,7 @@ requires Python 3
 1. clone this repository.
 1. `cd` into it.
 1. run `pip3 install .` on mac or `pip install .` on windows
-1. PIL is required if you wish to save gifs of your animations: `pip install PIL`
+1. PIL is required if you wish to save gifs of your animations: `pip install Pillow`
 
 It's best to take a look at the source code for the examples to get a feel for the usage of this library. 
 
