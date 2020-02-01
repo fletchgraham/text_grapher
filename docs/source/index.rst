@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to text_grapher's documentation!
+Text Grapher: 3D Graphics Rendered as Text
 ========================================
 
 .. toctree::
