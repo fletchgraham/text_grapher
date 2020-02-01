@@ -3,12 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Text Grapher: 3D Graphics Rendered as Text
-========================================
+Text Grapher
+==========================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+
+   intro.rst
+   getting_started.rst
 
 
 
