@@ -47,6 +47,10 @@ requires Python 3
 
 It's best to take a look at the source code for the examples to get a feel for the usage of this library. 
 
+## Documentation
+
+https://text-grapher.readthedocs.io/en/latest/
+
 ## Features
 
 - Render 2D and 3D animations as a series of text files
