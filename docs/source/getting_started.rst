@@ -2,9 +2,15 @@
 Getting Started
 ===============
 
-***********************
-Printing a Simple Graph
-***********************
+************
+Installation
+************
+
+TO DO
+
+***********
+Hello World
+***********
 
 The graph object is the canvas onto which graphics are drawn.
 It exists conceptually as a 2D array, the cells of which can be filled with
@@ -63,3 +69,9 @@ toward the top. The graph object has a method to accomplish this.
 . . . . . . . . . . .
 . . . . . . . . . . .
 . . . . . . . . . . .
+
+*******************
+Graphing a Function
+*******************
+
+TO DO

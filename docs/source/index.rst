@@ -3,15 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Text Grapher
-==========================================
+Text Grapher Docs
+=================
+
+**3D Rendering and Animation with Text**
 
 .. toctree::
    :maxdepth: 2
 
    intro.rst
    getting_started.rst
-
+   animation.rst
+   3d_space.rst
+   development.rst
 
 
 Indices and tables
