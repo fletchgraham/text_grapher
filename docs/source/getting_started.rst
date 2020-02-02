@@ -8,15 +8,19 @@ Installation
 
 TO DO
 
-***********
-Hello World
-***********
+****************
+Printing a Graph
+****************
+
+Because this library is all about creating visuals with text, Printing your
+first graph is easy to achieve and can be done from the Python REPL.
 
 The graph object is the canvas onto which graphics are drawn.
 It exists conceptually as a 2D array, the cells of which can be filled with
 characters in order to represent shapes or functions.
 
-Let's create a graph object.
+The following example shows the three lines necessary to create and show
+a blank graph.
 
 >>> import text_grapher as tg
 >>> graph = tg.Graph(11, 11)
@@ -151,8 +155,8 @@ That's about as close to a circle as we can get at this resolution.
 
 When graphing parametric equations with text_grapher, it's a good idea to
 overestimate the range of t values you need, and underestimate the step size.
-Over-plotting like that ensures the shape is filled in on the graph. Too few
+Over-plotting like that ensures the shape is filled-in on the graph. Too few
 t-values and our circle would look a bit sparse.
 
 That sums up the basics of working with the Graph object in text_grapher, in
-the next section you'll learn how to animate your graphs.
+the next chapter you'll learn how to animate your graphs.
