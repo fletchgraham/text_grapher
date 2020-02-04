@@ -1,5 +1,6 @@
 """Essentially the rendering engine of text grapher."""
 
+from math import sin, cos
 from random import choice
 
 class Graph:
@@ -23,6 +24,23 @@ class Graph:
     def __str__(self):
         return '\n'.join([' '.join(row) for row in self._array])
 
+    def character_at(self, x, y):
+        """Return the character at the given coordinates"""
+
+        x = self.scale_x * x + self.offset_x
+
+        # if the point is off either side of the grapher, get out early
+        if x > self.width or x < 0:
+            return None
+
+        y = self.scale_y * y + self.offset_y
+
+        # if the point is off the top or bottom, get out early
+        if y > self.height or y < 0:
+            return None
+
+        return self._array[int(y)][int(x)]
+
     def center_view(self):
         """place the origin at the center and flip y axis"""
         self.offset_x = self.width / 2
@@ -41,13 +59,13 @@ class Graph:
         x = self.scale_x * x + self.offset_x
 
         # if the point is off either side of the grapher, get out early
-        if x > self.width - 1 or x < 0:
+        if x > self.width or x < 0:
             return
 
         y = self.scale_y * y + self.offset_y
 
         # if the point is off the top or bottom, get out early
-        if y > self.height - 1 or y < 0:
+        if y > self.height or y < 0:
             return
 
         self._array[int(y)][int(x)] = character
@@ -68,6 +86,16 @@ class Graph:
         for y in range(min(y1, y2), max(y1, y2)):
             x = (dx / dy) * (y - y1) + x1
             self.plot(x, y, character)
+
+    def circle(self, x, y, radius, character):
+        """Draw a circle on the graph at (x, y) with the given radius and char.
+        """
+
+        for t in range(100):
+            t *= .1
+            _y = sin(t) * radius + y
+            _x = cos(t) * radius + x
+            self.plot(_x, _y, character)
 
     @classmethod
     def random_char(self, density=7):
