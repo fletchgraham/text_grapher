@@ -55,7 +55,7 @@ https://text-grapher.readthedocs.io/en/latest/
 
 - Render 2D and 3D animations as a series of text files
 - Save the animation as a gif (requires PIL)
-- Playback Text based animations in a GUI
+- Playback text-based animations in a GUI
 
 ## Contributing
 
