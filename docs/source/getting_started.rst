@@ -160,3 +160,66 @@ t-values and our circle would look a bit sparse.
 
 That sums up the basics of working with the Graph object in text_grapher, in
 the next chapter you'll learn how to animate your graphs.
+
+*********
+Animation
+*********
+
+Animations are, as I'm sure you're aware, a series of still images, which
+viewed in rapid succession, create the illusion of movement. With this library,
+instead of still images, the frames are text files.
+
+text_grapher has an object called the Scene that simplifies the process of
+creating the animation text files. The Scene keeps track of the Graph and any
+animations that we define and then uses that information to generate the
+frames. It can even open a GUI to play the animation once the frames are ready.
+
+In this section we'll create a simple looping animation of a circle that grows
+to fill the width of the graph and then shrinks again.
+
+First we'll set up the Scene.
+
+.. code-block:: python
+
+   from math import sin
+   import text_grapher as tg
+
+   # create a scene and name it
+   scene = tg.Scene()
+   scene.name = 'circle_example'
+
+   # A small graph for this example
+   scene.graph.width = 11
+   scene.graph.height = 11
+
+   # roughly the period of a sine wave multiplied by ten
+   scene.graph.frame_stop = 32
+
+   # put (0, 0) at the center of the graph
+   scene.graph.center_view()
+
+The Scene object has a method for adding animations. It can be used to decorate
+functions that are meant to be animated. When a function definition is
+decorated with ``@scene.animation`` it gets added to a list of functions that
+run at the beginning of each frame.
+
+Here we create a function that draws a circle whose radius is based on the
+frame number.
+
+.. code-block:: python
+
+   # use the decorator to define our animation
+   @scene.animation
+   def circle_animation(frame):
+       radius = (sin(frame / 10) + 1) * 3 # oscillating radius
+       scene.graph.circle(0, 0, radius, '@')
+
+   # render the scene and play it in the GUI
+   scene.render(open_player=True)
+
+
+.. image:: _static/circle_example.gif
+
+As an alternative to opening the GUI, if you have PIL installed you can save a
+gif of the animation by calling ``scene.render_gif()`` which would be
+preferable for sharing your animation.
