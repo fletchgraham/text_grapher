@@ -12,3 +12,9 @@ def test_circle():
     assert g.character_at(4, 0) == '@'
     assert g.character_at(0, -4) == '@'
     assert g.character_at(-4, 0) == '@'
+
+def test_resize():
+    g = Graph()
+    g.width, g.height = 30, 30
+    assert len(g._array) == 30
+    assert len(g._array[0]) == 30

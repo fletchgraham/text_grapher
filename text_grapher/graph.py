@@ -11,8 +11,8 @@ class Graph:
     cells."""
     def __init__(self, width=40, height=40, character='.'):
         self._array = [[]]
-        self.width = width
-        self.height = height
+        self._width = width
+        self._height = height
         self.background = character
         self.clear()
 
@@ -40,6 +40,24 @@ class Graph:
             return None
 
         return self._array[int(y)][int(x)]
+
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, value: int):
+        self._width = value
+        self.clear()
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, value: int):
+        self._height = value
+        self.clear()
 
     def center_view(self):
         """place the origin at the center and flip y axis"""
