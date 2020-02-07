@@ -13,7 +13,6 @@ Text Grapher Docs
 
    intro.rst
    getting_started.rst
-   3d_space.rst
    development.rst
 
 
