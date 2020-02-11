@@ -27,19 +27,19 @@ class Graph:
     def character_at(self, x, y):
         """Return the character at the given coordinates"""
 
-        x = self.scale_x * x + self.offset_x
+        x = int(self.scale_x * x + self.offset_x)
 
         # if the point is off either side of the grapher, get out early
-        if x > self.width or x < 0:
+        if x > self.width - 1 or x < 0:
             return None
 
-        y = self.scale_y * y + self.offset_y
+        y = int(self.scale_y * y + self.offset_y)
 
         # if the point is off the top or bottom, get out early
-        if y > self.height or y < 0:
+        if y > self.height - 1 or y < 0:
             return None
 
-        return self._array[int(y)][int(x)]
+        return self._array[y][x]
 
     @property
     def width(self):
@@ -74,19 +74,19 @@ class Graph:
 
     def plot(self, x, y, character):
         """replace a character in the graph with the given character"""
-        x = self.scale_x * x + self.offset_x
+        x = int(self.scale_x * x + self.offset_x)
 
         # if the point is off either side of the grapher, get out early
-        if x > self.width or x < 0:
+        if x > self.width - 1  or x < 0:
             return
 
-        y = self.scale_y * y + self.offset_y
+        y = int(self.scale_y * y + self.offset_y)
 
         # if the point is off the top or bottom, get out early
-        if y > self.height or y < 0:
+        if y > self.height - 1 or y < 0:
             return
 
-        self._array[int(y)][int(x)] = character
+        self._array[y][x] = character
 
 
     def line(self, x1, y1, x2, y2, character):

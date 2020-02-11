@@ -4,6 +4,11 @@ def test_graph():
     g = Graph()
     assert '.' in str(g)
 
+def test_plot():
+    g = Graph(11,11)
+    g.plot(10, 10, '%')
+    assert g.character_at(10, 10) == '%'
+
 def test_circle():
     g = Graph(11, 11)
     g.center_view()
