@@ -9,10 +9,12 @@ class Graph:
     The graph exists conceptually as a 2D array of characters.
     Graphics are drawn on this array by replacing the characters within its
     cells."""
+
     def __init__(self, width=40, height=40, character='.'):
         self._array = [[]]
         self._width = width
         self._height = height
+        self._gradient = ' .-/rLo@'
         self.background = character
         self.clear()
 
@@ -22,10 +24,29 @@ class Graph:
         self.scale_y = 1
 
     def __str__(self):
-        return '\n'.join([' '.join(row) for row in self._array])
+        converted = [
+            [self.value_to_char(x) for x in y]
+            for y in self._array
+            ]
 
-    def character_at(self, x, y):
-        """Return the character at the given coordinates"""
+        return '\n'.join([' '.join(row) for row in converted])
+
+    def value_to_char(self, value):
+        """Return the graph's character for the given density value"""
+        if type(value) is str:
+            return value
+
+        if value > 1:
+            value = 1
+
+        elif value < 0:
+            value = 0
+
+        i = int(value * 7)
+        return self._gradient[i]
+
+    def value_at(self, x, y):
+        """Return the value at the given coordinates"""
 
         x = int(self.scale_x * x + self.offset_x)
 
@@ -40,6 +61,13 @@ class Graph:
             return None
 
         return self._array[y][x]
+
+    def character_at(self, x, y):
+        """Return the character of a given cell,
+
+        even if it was stored as float.
+        """
+        return self.value_to_char(self.value_at(x, y))
 
     @property
     def width(self):

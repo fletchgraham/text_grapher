@@ -4,6 +4,11 @@ def test_graph():
     g = Graph()
     assert '.' in str(g)
 
+def test_value_to_char():
+    g = Graph()
+    g.plot(0, 0, 1)
+    assert g.character_at(0, 0) == '@'
+
 def test_plot():
     g = Graph(11,11)
     g.plot(10, 10, '%')
