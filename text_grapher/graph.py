@@ -153,8 +153,10 @@ class Graph:
         for y, row in enumerate(self._array):
             for x, cell in enumerate(row):
                 i = x + len(row) * y
-                self.plot(x, y, pixels[i] / 255)
-        print(pixels)
+                try:
+                    self.plot(x, y, pixels[i] / 255)
+                except IndexError:
+                    pass
 
     @classmethod
     def random_char(self, density=7):
