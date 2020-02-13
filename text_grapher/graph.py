@@ -143,6 +143,19 @@ class Graph:
             _x = cos(t) * radius + x
             self.plot(_x, _y, character)
 
+    def load_image(self, fp):
+        """Plots an image on the graph"""
+        from PIL import Image
+        im = Image.open(fp, 'r')
+        im = im.convert('L')
+        im.thumbnail((self.width, self.height))
+        pixels = list(im.getdata())
+        for y, row in enumerate(self._array):
+            for x, cell in enumerate(row):
+                i = x + len(row) * y
+                self.plot(x, y, pixels[i] / 255)
+        print(pixels)
+
     @classmethod
     def random_char(self, density=7):
         """Return a random character of the given density.
